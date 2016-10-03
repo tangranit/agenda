@@ -2,6 +2,7 @@ package br.com.csintegra.models;
 
 import java.io.Serializable;
 
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "RECURSO")
@@ -24,7 +26,7 @@ public class Recurso implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	private Grupo grupo;
 
 	@Column(name = "nome", length = 100, nullable = false, unique = true)
@@ -127,7 +129,7 @@ public class Recurso implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "Recurso [id=" + id + ", grupo=" + grupo + ", nome=" + nome + "]";
+		return "Recurso [id=" + id + ", grupo=" + grupo.getId()+ ", nome=" + nome + "]";
 	}
 
 
