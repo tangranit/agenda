@@ -26,7 +26,7 @@ public class JPAConfiguration {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setUsername("root");
 		dataSource.setPassword("root");
-		dataSource.setUrl("jdbc:mysql://192.168.137.11/csagenda");
+		dataSource.setUrl("jdbc:mysql://192.168.0.212/csagenda");
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 
 		factoryBean.setDataSource(dataSource);
