@@ -2,6 +2,9 @@ package br.com.csintegra.services;
 
 import java.util.List;
 
+
+
+
 public interface GenericService<T> {
 
 	T findByName(String name);
@@ -14,7 +17,8 @@ public interface GenericService<T> {
 
 	List<T> findAll();
 
+	void deleteAll();
+	
 	T findById(Long id);
 
-	void deleteAll();
 }

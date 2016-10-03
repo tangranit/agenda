@@ -2,21 +2,13 @@ package br.com.csintegra.dao;
 
 import java.util.List;
 
+
 import org.springframework.stereotype.Repository;
 
 import br.com.csintegra.models.Recurso;
 
 @Repository
 public class RecursoDAO extends AbstractDAO<Recurso> implements GenericDAO<Recurso>{
-
-	/* (non-Javadoc)
-	 * @see br.com.csintegra.dao.GenericDAO#listAll()
-	 */
-	@Override
-	public List<Recurso> listAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	/* (non-Javadoc)
 	 * @see br.com.csintegra.dao.AbstractDAO#save(java.lang.Object)
@@ -42,7 +34,7 @@ public class RecursoDAO extends AbstractDAO<Recurso> implements GenericDAO<Recur
 	@Override
 	public void remove(Long id) {
 		// TODO Auto-generated method stub
-		super.remove(id);
+		super.remove(Recurso.class,id);
 	}
 
 	/* (non-Javadoc)
@@ -51,7 +43,7 @@ public class RecursoDAO extends AbstractDAO<Recurso> implements GenericDAO<Recur
 	@Override
 	public List<Recurso> listAll(String criteria, Class<?> clazz) {
 		// TODO Auto-generated method stub
-		return super.listAll("select r from Recurso", Recurso.class);
+		return super.listAll(criteria, clazz);
 	}
 
 	/* (non-Javadoc)
@@ -60,8 +52,15 @@ public class RecursoDAO extends AbstractDAO<Recurso> implements GenericDAO<Recur
 	@Override
 	public Recurso listById(Long id) {
 		// TODO Auto-generated method stub
-		return super.listById(id);
+		return super.listById(Recurso.class,id);
 	}
+
+	@Override
+	public List<Recurso> listAll() {
+		// TODO Auto-generated method stub
+		return super.listAll("select r from Recurso r", Recurso.class);
+	}
+
 
 	
 }

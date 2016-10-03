@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @javax.persistence.Table(name = "AGENDAMENTO", indexes = {
-		@Index(name = "ag_unique", columnList = "data,recursoid", unique = true) })
+		@Index(name = "ag_unique", columnList = "data", unique = true) })
 public class Agendamento {
 	@Id
 	@GeneratedValue
@@ -28,7 +28,6 @@ public class Agendamento {
 
 	@JsonIgnore
 	@OneToOne(fetch = FetchType.LAZY, targetEntity = Recurso.class, cascade = CascadeType.ALL)
-	@Column(name = "recursoid", nullable = false)
 	private Recurso recurso;
 	
 	@Column(name = "local", length = 200, nullable = true)

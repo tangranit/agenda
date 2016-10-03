@@ -3,15 +3,13 @@ package br.com.csintegra.dao;
 import java.util.List;
 
 public interface GenericDAO<T> {
-	
-	void save(T entity);
 
-	void remove(Long id);
+	void save(T entity);
 
 	void merge(T entity);
 
-	List<T> listAll();
+	void remove(Long id);
 
 	T listById(Long id);
-
+    List<T> listAll();
 }

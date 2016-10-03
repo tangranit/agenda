@@ -1,31 +1,34 @@
 package br.com.csintegra.models;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name = "RECURSO")
-public class Recurso {
+public class Recurso implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	private Grupo grupo;
 
 	@Column(name = "nome", length = 100, nullable = false, unique = true)
 	private String nome;
-
-	@JsonIgnore
-	@OneToOne(fetch = FetchType.LAZY, targetEntity = Grupo.class, cascade = CascadeType.ALL)
-	@Column(name = "grupoid", nullable = false, unique = true)
-	private Grupo grupo;
 
 	/**
 	 * @return the id
@@ -35,26 +38,10 @@ public class Recurso {
 	}
 
 	/**
-	 * @param id
-	 *            the id to set
+	 * @param id the id to set
 	 */
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	/**
-	 * @return the nome
-	 */
-	public String getNome() {
-		return nome;
-	}
-
-	/**
-	 * @param nome
-	 *            the nome to set
-	 */
-	public void setNome(String nome) {
-		this.nome = nome;
 	}
 
 	/**
@@ -65,16 +52,34 @@ public class Recurso {
 	}
 
 	/**
-	 * @param grupo
-	 *            the grupo to set
+	 * @param grupo the grupo to set
 	 */
 	public void setGrupo(Grupo grupo) {
 		this.grupo = grupo;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
+	 * @return the nome
+	 */
+	public String getNome() {
+		return nome;
+	}
+
+	/**
+	 * @param nome the nome to set
+	 */
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -87,9 +92,7 @@ public class Recurso {
 		return result;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -119,14 +122,14 @@ public class Recurso {
 		return true;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Recurso [id=" + id + ", nome=" + nome + "]";
+		return "Recurso [id=" + id + ", grupo=" + grupo + ", nome=" + nome + "]";
 	}
 
+
+	
 }

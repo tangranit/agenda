@@ -1,22 +1,32 @@
 package br.com.csintegra.models;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "GRUPO")
-public class Grupo {
+public class Grupo implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	
 	@Column(name = "nome", length = 100, nullable = false, unique = true)
-	private String nome;
+	private String nomeGrupo;
+
+	@Column(name = "descricao", length = 100, nullable = true)
+	private String descricao;
 
 	/**
 	 * @return the id
@@ -34,18 +44,40 @@ public class Grupo {
 	}
 
 	/**
-	 * @return the nome
+	 * @return the nomeGrupo
 	 */
-	public String getNome() {
-		return nome;
+	public String getNomeGrupo() {
+		return nomeGrupo;
 	}
 
 	/**
-	 * @param nome
-	 *            the nome to set
+	 * @param nomeGrupo
+	 *            the nomeGrupo to set
 	 */
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNomeGrupo(String nomeGrupo) {
+		this.nomeGrupo = nomeGrupo;
+	}
+
+	/**
+	 * @return the descricao
+	 */
+	public String getDescricao() {
+		return descricao;
+	}
+
+	/**
+	 * @param descricao
+	 *            the descricao to set
+	 */
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	/*
@@ -57,8 +89,9 @@ public class Grupo {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((nomeGrupo == null) ? 0 : nomeGrupo.hashCode());
 		return result;
 	}
 
@@ -76,15 +109,20 @@ public class Grupo {
 		if (getClass() != obj.getClass())
 			return false;
 		Grupo other = (Grupo) obj;
+		if (descricao == null) {
+			if (other.descricao != null)
+				return false;
+		} else if (!descricao.equals(other.descricao))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (nome == null) {
-			if (other.nome != null)
+		if (nomeGrupo == null) {
+			if (other.nomeGrupo != null)
 				return false;
-		} else if (!nome.equals(other.nome))
+		} else if (!nomeGrupo.equals(other.nomeGrupo))
 			return false;
 		return true;
 	}
@@ -96,7 +134,7 @@ public class Grupo {
 	 */
 	@Override
 	public String toString() {
-		return "Grupo [id=" + id + ", nome=" + nome + "]";
+		return "Grupo [id=" + id + ", nomeGrupo=" + nomeGrupo + ", descricao=" + descricao + "]";
 	}
 
 }

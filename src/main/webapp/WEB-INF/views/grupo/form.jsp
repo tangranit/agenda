@@ -10,35 +10,20 @@
 <title>CS Agenda</title>
 </head>
 <body>
-	<form:form method="POST" commandName="eventosInformacoes">
+	<form:form method="POST" commandName="grupo">
 		<form:hidden path="id" />
 		<div>
-			<label>Titulo</label>
-			<form:input path="titulo" placeholder="titulo" />
-			<form:errors path="titulo" />
+			<label>Grupo:</label>
+			<form:input path="nomeGrupo" placeholder="nomeGrupo" />
+			<form:errors path="nomeGrupo" />
 		</div>
 		<div>
-			<label>Inicio</label>
-			<form:input path="inicio" />
-			<form:errors path="inicio" />
-		</div>
-		<div>
-			<label>Fim</label>
-			<form:input path="fim" />
-			<form:errors path="fim" />
-		</div>
-		<div>
-			<label>Recurso</label>
-			<form:input path="recurso" />
-			<form:errors path="recurso" />
-		</div>
-		<div>
-			<label>Descricao</label>
-			<form:textarea path="descricao" />
+			<label>Descrição:</label>
+			<form:input path="descricao" placeholder="descricao" />
 			<form:errors path="descricao" />
 		</div>
 		<button type="submit"
-			onclick="location.href='${spring:mvcUrl('CC#novo').build()}'">Gravar</button>
+			onclick="location.href='${spring:mvcUrl('GC#create').build()}'">Gravar</button>
 
 	</form:form>
 </body>

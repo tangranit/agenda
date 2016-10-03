@@ -2,6 +2,7 @@ package br.com.csintegra.dao;
 
 import java.util.List;
 
+
 import org.springframework.stereotype.Repository;
 
 import br.com.csintegra.models.Agendamento;
@@ -33,14 +34,14 @@ public class AgendamentoDAO extends AbstractDAO<Agendamento> implements  Generic
 	@Override
 	public void remove(Long id) {
 		// TODO Auto-generated method stub
-		super.remove(id);
+		super.remove(Agendamento.class,id);
 	}
 
 	/* (non-Javadoc)
 	 * @see br.com.csintegra.dao.AbstractDAO#listAll(java.lang.String, java.lang.Class)
 	 */
 	@Override
-	public List<Agendamento> listAll(String criteria, Class<?> clazz) {
+	public List<Agendamento> listAll() {
 		// TODO Auto-generated method stub
 		return super.listAll("select ag from Agendamento", Agendamento.class);
 	}
@@ -51,13 +52,7 @@ public class AgendamentoDAO extends AbstractDAO<Agendamento> implements  Generic
 	@Override
 	public Agendamento listById(Long id) {
 		// TODO Auto-generated method stub
-		return super.listById(id);
-	}
-
-	@Override
-	public List<Agendamento> listAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return super.listById(Agendamento.class,id);
 	}
 
 }

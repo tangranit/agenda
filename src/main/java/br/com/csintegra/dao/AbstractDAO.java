@@ -21,8 +21,8 @@ public abstract class AbstractDAO<T> {
 		em.refresh(entity);
 	}
 
-	public void remove(Long id) {
-		T entity = listById(id);
+	public void remove(Class<?> clazz,Long id) {
+		T entity = listById(clazz,id);
 		em.remove(entity);
 	}
 
@@ -33,8 +33,8 @@ public abstract class AbstractDAO<T> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public T listById(Long id) {
-		return (T) em.find(getClass(), id);
+	public T listById(Class<?> clazz,Long id) {
+		return (T) em.find(clazz, id);
 	}
 
 }
