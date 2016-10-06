@@ -20,7 +20,7 @@ import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @EnableWebMvc
-@ComponentScan(basePackages = {"br.com.csintegra.impl", "br.com.csintegra.services", "br.com.csintegra.controllers", "br.com.csintegra.models","br.com.csintegra.dao" })
+@ComponentScan(basePackages = {"br.com.csintegra.impl", "br.com.csintegra.services", "br.com.csintegra.controllers", "br.com.csintegra.models","br.com.csintegra.dao","br.com.csintegra.logics" })
 public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 
 	@Bean

@@ -3,6 +3,7 @@ package br.com.csintegra.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,25 +29,29 @@ public class RecursoController {
 		ModelAndView mv = new ModelAndView("recurso/form");
 		mv.addObject("grupos", grupoService.findAll());
 		mv.addObject("recurso", new Recurso());
-		
+
 		return mv;
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView create(Recurso recurso) {
-		
+
 		Grupo grupo = grupoService.findById(recurso.getGrupo().getId());
 		recurso.setGrupo(grupo);
 		recursoService.save(recurso);
 		return new ModelAndView("redirect:/recurso");
 
 	}
-	
-	@RequestMapping(value="/pesquisar",method = RequestMethod.GET)
+
+	@RequestMapping(value = "/pesquisar", method = RequestMethod.GET)
 	public List<Recurso> search() {
-		
-		
 		return recursoService.findAll();
+
+	}
+
+	@RequestMapping(value = "/pesquisar/{id}", method = RequestMethod.GET)
+	public Recurso searchById(@PathVariable Long id) {
+		return recursoService.findById(id);
 
 	}
 
